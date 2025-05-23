@@ -59,7 +59,7 @@ pipeline {
             steps {
                 echo "Yeni backend container oluşturuluyor..."
                 // Backend portunu backend uygulamana göre değiştir
-                bat "docker run -d --name %BACKEND_CONTAINER% -p 8080:8080 %BACKEND_IMAGE%"
+                bat "docker run -d --name %BACKEND_CONTAINER% -p 8081:8080 %BACKEND_IMAGE%"
             }
         }
     }
