@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Repo Klonla') {
             steps {
-                git url: 'https://github.com/tahirtolu/ymg2alistirma2', branch: 'main'
+                git url: 'https://github.com/tahirtolu/ymg2alistirma2.git', branch: 'main'
             }
         }
 
