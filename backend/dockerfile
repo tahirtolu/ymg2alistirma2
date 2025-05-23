@@ -1,0 +1,18 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Önce requirements.txt'yi kopyala
+COPY requirements.txt requirements.txt
+
+# Gerekli paketleri yükle
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Netcat'i yükle
+RUN apt-get update && apt-get install -y netcat-traditional && rm -rf /var/lib/apt/lists/*
+
+# Tüm uygulama dosyalarını kopyala
+COPY . .
+
+# PostgreSQL'in hazır olmasını bekle
+CMD ["sh", "-c", "while ! nc -z db 5432; do sleep 1; done && python app.py"]
